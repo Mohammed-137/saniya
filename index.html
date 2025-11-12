@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Saniya Portfolio — Responsive</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --accent: #ff78c7;
+        --accent-2: #5b3cff;
+        --bg: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        --glass: rgba(255, 255, 255, 0.06);
+        --glass-2: rgba(255, 255, 255, 0.04);
+        --card-shadow: 0 10px 30px rgba(11, 8, 30, 0.6);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+        background: var(--bg);
+        color: #eae6ff;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        min-height: 100vh;
+      }
+
+      /* NAV */
+      .nav-transparent {
+        background: transparent !important;
+      }
+      .navbar-brand {
+        font-family: "Great Vibes";
+        font-size: 1.85rem;
+        color: var(--accent);
+      }
+      .nav-link {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      /* HERO */
+      .hero {
+        padding: 5rem 0 3rem;
+        position: relative;
+        perspective: 1200px;
+      }
+      .card-3d {
+        width: 330px;
+        height: 430px;
+        margin: 0 auto;
+        border-radius: 22px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.06),
+          rgba(255, 255, 255, 0.02)
+        );
+        box-shadow: var(--card-shadow);
+        backdrop-filter: blur(6px);
+        transform-style: preserve-3d;
+        transition: transform 0.18s ease-out;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .avatar-wrap {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-top: 12px;
+        transform: translateZ(50px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+        border: 6px solid rgba(255, 255, 255, 0.04);
+      }
+      .avatar-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .glow-line {
+        height: 6px;
+        width: 80px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        margin: 14px auto 20px;
+        filter: drop-shadow(0 6px 18px rgba(255, 120, 199, 0.18));
+      }
+
+      /* Floating ornaments */
+      .floating {
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: radial-gradient(
+            circle at 30% 30%,
+            rgba(255, 120, 199, 0.18),
+            transparent 30%
+          ),
+          radial-gradient(
+            circle at 70% 70%,
+            rgba(91, 60, 255, 0.12),
+            transparent 30%
+          );
+        filter: blur(18px);
+        z-index: 0;
+      }
+      .float-1 {
+        left: -40px;
+        top: 40px;
+      }
+      .float-2 {
+        right: -20px;
+        top: 140px;
+        width: 160px;
+        height: 160px;
+      }
+
+      /* Sections */
+      section {
+        padding: 3.6rem 0;
+      }
+      .container-xl {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* About */
+      .about-row {
+        display: flex;
+        gap: 1.8rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .about-img-wrap {
+        flex: 0 0 280px;
+        max-width: 280px;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+        border: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .about-img-wrap img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .about-content {
+        flex: 1;
+        min-width: 240px;
+      }
+      .tag {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-2));
+        color: #111;
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+      .about-left {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Skills */
+      .skills-grid {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .skill-card {
+        width: 150px;
+        height: 150px;
+        perspective: 1200px;
+      }
+      .skill-inner {
+        width: 100%;
+        height: 100%;
+        border-radius: 14px;
+        transform-style: preserve-3d;
+        transition: transform 0.9s cubic-bezier(0.17, 0.67, 0.22, 1);
+        position: relative;
+        will-change: transform;
+      }
+      .skill-face {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 14px;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.03),
+          rgba(255, 255, 255, 0.01)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        box-shadow: 0 14px 40px rgba(12, 8, 30, 0.55);
+      }
+      .skill-inner .front {
+        transform: translateZ(36px);
+      }
+      .skill-inner .right {
+        transform: rotateY(90deg) translateZ(36px);
+      }
+      .skill-inner .left {
+        transform: rotateY(-90deg) translateZ(36px);
+      }
+      .skill-inner .back {
+        transform: rotateY(180deg) translateZ(36px);
+      }
+      .skill-icon {
+        font-size: 28px;
+        color: var(--accent);
+      }
+      .skill-title {
+        font-size: 0.9rem;
+        margin-top: 8px;
+      }
+      .skill-inner::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 14px;
+        box-shadow: 0 40px 80px rgba(8, 4, 20, 0.35);
+        opacity: 0;
+        transition: opacity 0.35s;
+      }
+      .skill-card:hover .skill-inner::after {
+        opacity: 1;
+      }
+
+      /* Portfolio / work cards */
+      .work-card {
+        border-radius: 14px;
+        overflow: hidden;
+        background: var(--glass-2);
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        box-shadow: var(--card-shadow);
+        display: block;
+      }
+      .work-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Contact card flip */
+      .contact-stage {
+        display: flex;
+        justify-content: center;
+      }
+      .contact-card {
+        width: 420px;
+        height: 360px;
+        perspective: 1400px;
+      }
+      .contact-inner {
+        width: 100%;
+        height: 100%;
+        border-radius: 16px;
+        transform-style: preserve-3d;
+        transition: transform 0.9s cubic-bezier(0.2, 0.9, 0.2, 1);
+        position: relative;
+        transform-origin: center center;
+      }
+      .contact-front,
+      .contact-back {
+        position: absolute;
+        inset: 0;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        border-radius: 16px;
+        box-shadow: var(--card-shadow);
+        border: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .contact-front {
+        background: linear-gradient(
+          180deg,
+          rgba(91, 60, 255, 0.08),
+          rgba(255, 120, 199, 0.03)
+        );
+      }
+      .contact-back {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 120, 199, 0.05),
+          rgba(91, 60, 255, 0.03)
+        );
+        transform: rotateY(180deg);
+      }
+      .contact-inner.flipped {
+        transform: rotateY(180deg);
+      }
+
+      footer {
+        padding: 2rem 0;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.65);
+      }
+
+      /* small screens */
+      @media (max-width: 992px) {
+        .card-3d {
+          width: 280px;
+          height: 380px;
+        }
+        .about-row {
+          flex-direction: column-reverse;
+        }
+        .about-img-wrap {
+          max-width: 360px;
+          width: 100%;
+        }
+        .contact-card {
+          width: 100%;
+          max-width: 520px;
+        }
+      }
+      @media (max-width: 576px) {
+        .card-3d {
+          width: 240px;
+          height: 320px;
+        }
+        .avatar-wrap {
+          width: 140px;
+          height: 140px;
+        }
+        .work-card img {
+          height: 180px;
+        }
+      }
+
+      /* floating animations */
+      @keyframes floaty {
+        0% {
+          transform: translateY(0) translateX(0);
+        }
+        50% {
+          transform: translateY(-12px) translateX(6px);
+        }
+        100% {
+          transform: translateY(0) translateX(0);
+        }
+      }
+      .float-1 {
+        animation: floaty 6s ease-in-out infinite;
+      }
+      .float-2 {
+        animation: floaty 8s ease-in-out infinite;
+      }
+      @keyframes popIn {
+        0% {
+          opacity: 0;
+          transform: translateY(12px) scale(0.96);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      .pop {
+        animation: popIn 0.6s ease forwards;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="floating float-1"></div>
+    <div class="floating float-2"></div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark nav-transparent py-3">
+      <div class="container-xl">
+        <a
+          class="navbar-brand"
+          href="#"
+          style="font-weight: bolder; font-size: 1.85rem"
+          >Saniya</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMain"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMain">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#skills">Skills</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header id="home" class="hero">
+      <div class="container-xl text-center">
+        <div class="card-3d pop" id="heroCard">
+          <div class="avatar-wrap" id="heroAvatar">
+            <img
+              src="https://img.pikbest.com/png-images/20240620/cute-cartoon-hijab-girl-with-red-rose-image_10625788.png!bw700"
+              alt="portrait"
+            />
+          </div>
+          <h1>SANIYA</h1>
+          <p class="lead">
+            MBA (Finance) • Digital Marketer • Canva Video & Photo Instructor
+          </p>
+          <div class="glow-line"></div>
+          <p
+            style="
+              font-size: 0.9rem;
+              color: rgba(255, 255, 255, 0.8);
+              margin-top: 8px;
+            "
+          >
+            "Helping creators make thumb-stopping visuals & videos"
+          </p>
+        </div>
+
+        <div class="mt-4">
+          <a href="#about" class="btn btn-outline-light btn-lg me-2"
+            >About Me</a
+          >
+          <a href="#contact" class="btn btn-light btn-lg" style="color: #3a1266"
+            >Work With Me</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container-xl">
+        <div class="about-row">
+          <div class="about-left">
+            <div class="about-img-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=7a9a1b3ec2a9f6f3e9f7c8a6d5b4e3f2"
+                alt="about photo"
+              />
+            </div>
+          </div>
+          <div class="about-content">
+            <span class="tag">MBA — Finance</span>
+            <h2 style="margin-top: 6px">About Me</h2>
+            <p style="color: rgba(255, 255, 255, 0.9)">
+              Saniya completed an MBA in Finance and transitioned into digital
+              marketing. She now teaches creators how to make professional
+              photos and videos using Canva, and helps small businesses tell
+              their stories with strategic marketing and stunning visuals.
+            </p>
+            <ul style="color: rgba(255, 255, 255, 0.78); margin-top: 12px">
+              <li>
+                Specializes in short-form video scripts, thumbnail design, and
+                Canva motion graphics.
+              </li>
+              <li>
+                Teaches workshops and 1:1 mentoring for creators and small
+                teams.
+              </li>
+              <li>
+                Combines finance-driven thinking with creative marketing
+                execution.
+              </li>
+            </ul>
+            <div class="mt-3">
+              <a href="#contact" class="btn btn-outline-light btn-sm me-2"
+                >Book a Session</a
+              >
+              <a
+                href="#skills"
+                class="btn btn-light btn-sm"
+                style="color: #3a1266"
+                >See Skills</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="container-xl text-center">
+        <h2>Skills & Tools</h2>
+        <p style="color: rgba(255, 255, 255, 0.8)">
+          A mix of marketing strategy, creative design, and video production
+          using Canva.
+        </p>
+
+        <div class="d-flex mt-4 skills-grid">
+          <div class="skill-card">
+            <div class="skill-inner">
+              <div class="skill-face front">
+                <div>
+                  <i class="fa-solid fa-bullhorn skill-icon"></i>
+                  <div class="skill-title">Digital Marketing</div>
+                </div>
+              </div>
+              <div class="skill-face right">
+                <div style="padding: 8px; text-align: center">
+                  Campaign strategy, Ads & Growth
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-inner">
+              <div class="skill-face front">
+                <div>
+                  <i class="fa-solid fa-paint-brush skill-icon"></i>
+                  <div class="skill-title">Canva Design</div>
+                </div>
+              </div>
+              <div class="skill-face back">
+                <div style="padding: 8px; text-align: center">
+                  Motion graphics & thumbnails
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-inner">
+              <div class="skill-face front">
+                <div>
+                  <i class="fa-solid fa-video skill-icon"></i>
+                  <div class="skill-title">Video Creation</div>
+                </div>
+              </div>
+              <div class="skill-face left">
+                <div style="padding: 8px; text-align: center">
+                  Short-form editing & scripts
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-inner">
+              <div class="skill-face front">
+                <div>
+                  <i class="fa-solid fa-chart-line skill-icon"></i>
+                  <div class="skill-title">Analytics</div>
+                </div>
+              </div>
+              <div class="skill-face right">
+                <div style="padding: 8px; text-align: center">
+                  Performance tracking & ROI
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK / PORTFOLIO -->
+    <section id="work">
+      <div class="container-xl">
+        <h2 class="text-center">Portfolio Preview</h2>
+        <p class="text-center" style="color: rgba(255, 255, 255, 0.8)">
+          Selected thumbnails & campaign images
+        </p>
+
+        <div class="row g-4 mt-3">
+          <div class="col-md-4">
+            <div class="work-card">
+              <img
+                src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=7d6a3b8a3c0a2e9b"
+                alt="work"
+              />
+              <div class="p-3">
+                <h5>Canva Video Series</h5>
+                <p style="color: rgba(255, 255, 255, 0.75); font-size: 0.9rem">
+                  Thumbnails & short-form templates she created for creators.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="work-card">
+              <img
+                src="https://images.unsplash.com/photo-1529676468690-3f30b3a3b7a7?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=5b1c8f7a2e1c9f8d"
+                alt="work"
+              />
+              <div class="p-3">
+                <h5>Branding Kit</h5>
+                <p style="color: rgba(255, 255, 255, 0.75); font-size: 0.9rem">
+                  Logo, color palette & Instagram templates.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="work-card">
+              <img
+                src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=1a2b3c4d5e6f7g8h"
+                alt="work"
+              />
+              <div class="p-3">
+                <h5>Workshop Slides</h5>
+                <p style="color: rgba(255, 255, 255, 0.75); font-size: 0.9rem">
+                  Live session visuals used during teaching sessions.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container-xl">
+        <h2 class="text-center">Get in touch</h2>
+        <p class="text-center" style="color: rgba(255, 255, 255, 0.78)">
+          Book a mentoring session or collaboration
+        </p>
+
+        <div class="d-flex justify-content-center mt-4 contact-stage">
+          <div class="contact-card">
+            <div class="contact-inner" id="contactInner">
+              <div class="contact-front">
+                <h4>Send a message</h4>
+                <form id="contactForm" class="mt-3">
+                  <div class="mb-2">
+                    <input
+                      id="name"
+                      name="name"
+                      class="form-control form-control-sm"
+                      placeholder="Your name"
+                      required
+                    />
+                  </div>
+                  <div class="mb-2">
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      class="form-control form-control-sm"
+                      placeholder="Email"
+                      required
+                    />
+                  </div>
+                  <div class="mb-2">
+                    <textarea
+                      id="message"
+                      name="message"
+                      class="form-control form-control-sm"
+                      placeholder="Message / Brief"
+                      rows="3"
+                      required
+                    ></textarea>
+                  </div>
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <button type="submit" class="btn btn-outline-light btn-sm">
+                      Send
+                    </button>
+                    <button
+                      type="button"
+                      id="flipBtn"
+                      class="btn btn-sm btn-light"
+                      style="color: #3a1266"
+                    >
+                      See details
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="contact-back">
+                <h5>Contact Info</h5>
+                <p style="color: rgba(255, 255, 255, 0.85)">
+                  Email: sania.creates@example.com<br />Instagram:
+                  @Saniya.creates<br />Work: 1:1 mentoring, workshops, freelance
+                </p>
+                <div class="mt-3">
+                  <button id="flipBack" class="btn btn-outline-light btn-sm">
+                    Back to form
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container-xl">
+        <small>© Saniya — Digital Marketing & Canva Instructor</small>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // Hero tilt (defensive)
+      (function () {
+        const heroCard = document.getElementById("heroCard");
+        const heroAvatar = document.getElementById("heroAvatar");
+        function applyTilt(el, maxTilt = 14) {
+          if (!el) return;
+          el.addEventListener("pointermove", (e) => {
+            const r = el.getBoundingClientRect();
+            const cx = r.left + r.width / 2;
+            const cy = r.top + r.height / 2;
+            const dx = e.clientX - cx;
+            const dy = e.clientY - cy;
+            const px = (dy / (r.height / 2)) * maxTilt;
+            const py = (dx / (r.width / 2)) * -maxTilt;
+            el.style.transform = `rotateX(${px}deg) rotateY(${py}deg) translateZ(10px)`;
+          });
+          el.addEventListener(
+            "pointerleave",
+            () => (el.style.transform = "rotateX(0) rotateY(0)")
+          );
+        }
+        applyTilt(heroCard, 10);
+        applyTilt(heroAvatar, 6);
+      })();
+
+      /* Skills: RAF-based smooth animations */
+      (function () {
+        const skillCards = [];
+        document.querySelectorAll(".skill-card").forEach((card) => {
+          const inner = card.querySelector(".skill-inner");
+          if (!inner) return;
+          const state = {
+            inner,
+            rx: 0,
+            ry: 0,
+            breath: 0,
+            targetRx: 0,
+            targetRy: 0,
+          };
+          skillCards.push(state);
+
+          card.addEventListener("pointermove", (e) => {
+            const r = card.getBoundingClientRect();
+            const cx = r.left + r.width / 2;
+            const cy = r.top + r.height / 2;
+            const dx = (e.clientX - cx) / (r.width / 2);
+            const dy = (e.clientY - cy) / (r.height / 2);
+            state.targetRx = -dy * 8;
+            state.targetRy = dx * 12;
+          });
+
+          card.addEventListener("pointerleave", () => {
+            state.targetRx = 0;
+            state.targetRy = 0;
+          });
+        });
+
+        let lastTime = performance.now();
+        function animateSkills(now) {
+          const dt = Math.min((now - lastTime) / 1000, 0.05);
+          lastTime = now;
+          skillCards.forEach((s) => {
+            const speed = 12;
+            s.rx += (s.targetRx - s.rx) * Math.min(speed * dt, 1);
+            s.ry += (s.targetRy - s.ry) * Math.min(speed * dt, 1);
+            s.breath = Math.sin(now / 700) * 0.6;
+            s.inner.style.transform = `translateZ(6px) translateY(${s.breath}px) rotateX(${s.rx}deg) rotateY(${s.ry}deg)`;
+          });
+          requestAnimationFrame(animateSkills);
+        }
+        requestAnimationFrame(animateSkills);
+      })();
+
+      /* Contact card flip using class toggle (safer than inline style transforms) */
+      (function () {
+        const contactInner = document.getElementById("contactInner");
+        const flipBtn = document.getElementById("flipBtn");
+        const flipBack = document.getElementById("flipBack");
+        if (contactInner) {
+          if (flipBtn)
+            flipBtn.addEventListener("click", () =>
+              contactInner.classList.add("flipped")
+            );
+          if (flipBack)
+            flipBack.addEventListener("click", () =>
+              contactInner.classList.remove("flipped")
+            );
+        }
+      })();
+
+      /* smooth anchor scroll */
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const href = a.getAttribute("href");
+          if (!href || href === "#") return;
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target)
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+
+      /* contact POST (defensive) */
+      (function () {
+        const form = document.getElementById("contactForm");
+        if (!form) return;
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const name =
+            (document.getElementById("name") || {}).value?.trim() || "";
+          const email =
+            (document.getElementById("email") || {}).value?.trim() || "";
+          const message =
+            (document.getElementById("message") || {}).value?.trim() || "";
+          try {
+            const res = await fetch("/api/contact", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ name, email, message }),
+            });
+            if (res.ok) {
+              alert("Thanks! Your message was sent.");
+              form.reset();
+            } else {
+              const err = await res
+                .json()
+                .catch(() => ({ message: "Server error" }));
+              alert("Error: " + (err.message || "Could not send message"));
+            }
+          } catch (err) {
+            console.error(err);
+            alert("Network error: Could not reach server.");
+          }
+        });
+      })();
+
+      /* intersection pop animation */
+      (function () {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((ent) => {
+              if (ent.isIntersecting) ent.target.classList.add("pop");
+            });
+          },
+          { threshold: 0.12 }
+        );
+        document
+          .querySelectorAll(
+            ".card-3d, .skill-card, .work-card, .about-img-wrap"
+          )
+          .forEach((n) => {
+            observer.observe(n);
+          });
+      })();
+    </script>
+  </body>
+</html>
